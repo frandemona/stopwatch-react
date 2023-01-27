@@ -95,13 +95,32 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+h1 {
+  font-size: 10rem;
+}
+
+button {
+  background: solid #fff;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
   }
 }

@@ -14,7 +14,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* <noscript>
           <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height='0' width='0' title='google-tag-manager' className='google-iframe' />
         </noscript> */}
-        <AnalyticsProvider>{children}</AnalyticsProvider>
+        <AnalyticsProvider />
+        {children}
       </body>
     </html>
   );

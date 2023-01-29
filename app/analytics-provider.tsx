@@ -5,7 +5,7 @@ import { PropsWithChildren, useEffect } from 'react';
 import * as gtag from '../lib/gtag';
 // import { pageview } from '../lib/gtm';
 
-export default function AnalyticsProvider({ children }: PropsWithChildren) {
+export default function AnalyticsProvider() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -14,14 +14,16 @@ export default function AnalyticsProvider({ children }: PropsWithChildren) {
       gtag.pageview(url);
     };
 
-    const url = pathname + searchParams.toString();
+    if (pathname && process.env.NODE_ENV === 'production') {
+      const url = pathname + searchParams.toString();
 
-    // GTAG
-    // router.events.on('routeChangeComplete', handleRouteChange);
-    // router.events.on('hashChangeComplete', handleRouteChange);
-    handleRouteChange(url);
-    // GTM
-    // router.events.on('routeChangeComplete', pageview);
+      // GTAG
+      // router.events.on('routeChangeComplete', handleRouteChange);
+      // router.events.on('hashChangeComplete', handleRouteChange);
+      handleRouteChange(url);
+      // GTM
+      // router.events.on('routeChangeComplete', pageview);
+    }
     return () => {
       // GTAG
       // router.events.off('routeChangeComplete', handleRouteChange);
@@ -31,5 +33,5 @@ export default function AnalyticsProvider({ children }: PropsWithChildren) {
     };
   }, [pathname, searchParams]);
 
-  return <>{children}</>;
+  return <></>;
 }

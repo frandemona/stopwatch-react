@@ -101,6 +101,11 @@ body {
   }
 }
 
+.google-iframe {
+  display: none;
+  visibility: hidden;
+}
+
 h1 {
   font-size: 10rem;
 }
